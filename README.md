@@ -13,7 +13,8 @@ Creinting the model for the first time, or making any changes in the model of th
    1. Download libraries: `pip install flask joblib numpy flask-cors` | `python app.py` 
 
 ## Bugs / Features to be implemented beyond project scope - To Do:
-1. Securi Features:
+1. ✅ Home Page: ✅ Remove unsed link from nav bar
+2. Securi Features:
    1. Login page:
       1. ✅ Basic Form Validation
       2. Compare the password in frontend when login the password and then generate the jwt tocken and cookie from server. OR
@@ -21,11 +22,11 @@ Creinting the model for the first time, or making any changes in the model of th
    2. ✅ Register Page: 
       1. ✅ Hash the password in frontend while registering the user
       2. ✅ Basic Form Validation
-2. ✅ Chat:
+3. ✅ Chat:
    1. ✅ Solve the error of socket.io
    2. ✅ Add functionality to "Send a Message".
-3. ⚠️ Add `Edit` and `Delete` post feature for "Posts".
-4. ⚠️ newPostPage: 
+4. ⚠️ Add `Edit` and `Delete` post feature for "Posts".
+5. ⚠️ newPostPage: 
    1. ⚠️ Basic Form Validation.
    2. ⚠️ Make changes in the Data Base shcema
    3. ⚠️ Delete the `Income Policy`.
@@ -37,5 +38,5 @@ Creinting the model for the first time, or making any changes in the model of th
    9. ❌ Add `READY TO MOVE ?` (boolean) - not required (default value = 0)
    10. ⚠️ Add `Resale` (boolean [0 or 1]) - if the property is of type `BUY`.
    11. ⚠️ Add `Predict Price` button, only if the `Type` is `Rent`.
-5. ⚠️ AIML Model integration.
-6. Add 'React Toastify'.
+6. ⚠️ AIML Model integration.
+7. Add 'React Toastify'.
