@@ -52,9 +52,17 @@ function SinglePage() {
                 <h1>{post.title}</h1>
                 <div className="address">
                   <img src="/pin.png" alt="" />
-                  <span>{post.address}, {post.city}</span>
+                  <span>
+                    {post.address}, {post.city}
+                  </span>
                 </div>
-                <div className="price">&#x20B9; {post.price}</div>
+                {post.type === "rent" ? (
+                  <div className="price">&#x20B9; {post.price}/month</div>
+                ) : (
+                  <>
+                    <div className="price">&#x20B9; {post.price}</div>
+                  </>
+                )}
               </div>
               <div className="user">
                 <img src={post.user.avatar || "./noavatar.jpg"} alt="" />
@@ -121,7 +129,7 @@ function SinglePage() {
           </div>
           <p className="title">Nearby Places</p>
           <div className="listHorizontal">
-          <div className="feature">
+            <div className="feature">
               <img src="/school.png" alt="" />
               <div className="featureText">
                 <span>School</span>
