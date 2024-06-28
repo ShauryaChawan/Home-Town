@@ -83,7 +83,7 @@ function NewPostPage() {
         LATITUDE: latitude,
       });
       console.log(res.data.prediction);
-      setPrediction(res.data.prediction.toFixed(3));
+      setPrediction(res.data.prediction.toFixed(5));
     } catch (err) {
       console.log(err);
       setError(error);
@@ -228,7 +228,7 @@ function NewPostPage() {
           </form>
           <div className="ai-div" onClick={handleAIPrediction}>
             <div className="ai-header">
-              <img src="./google_bard_logo.png" className="ai-img" alt="" />
+              <img src="/google_bard_logo.png" className="ai-img" alt="" />
               <p className="ai-heading">
                 Discover Your Home&apos;s True Worth with AI Precision
               </p>

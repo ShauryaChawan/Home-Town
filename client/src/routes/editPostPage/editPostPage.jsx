@@ -16,43 +16,72 @@ function EditPostPage() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  console.log(post.id)
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const inputs = Object.fromEntries(formData);
 
     try {
-      const res = await apiRequest.put(`/posts/${post.id}`, {
-        postData: {
-          title: inputs.title,
-          price: parseInt(inputs.price),
-          images: images,
-          address: inputs.address,
-          city: inputs.city,
-          bhk_or_rk: inputs.bhk_or_rk,
-          under_construction: inputs.uc === "yes" ? true : false,
-          bedroom: parseInt(inputs.bedroom),
-          bathroom: parseInt(inputs.bathroom),
-          latitude: inputs.latitude,
-          longitude: inputs.longitude,
-          rera: inputs.rera === "yes" ? true : false,
-          size: parseInt(inputs.size),
-          type: inputs.type,
-          property: inputs.property,
-        },
-        postDetail: {
-          desc: value,
-          utilities: inputs.utilities,
-          pet: inputs.pet,
-          school: parseInt(inputs.school),
-          bus: parseInt(inputs.bus),
-          restaurant: parseInt(inputs.restaurant),
-        },
-      });
+      let res
+      if(images.length === 0){
+        res = await apiRequest.put(`/posts/${post.id}`, {
+          postData: {
+            title: inputs.title,
+            price: parseInt(inputs.price),
+            address: inputs.address,
+            city: inputs.city,
+            bhk_or_rk: inputs.bhk_or_rk,
+            under_construction: inputs.uc === "yes" ? true : false,
+            bedroom: parseInt(inputs.bedroom),
+            bathroom: parseInt(inputs.bathroom),
+            latitude: inputs.latitude,
+            longitude: inputs.longitude,
+            rera: inputs.rera === "yes" ? true : false,
+            size: parseInt(inputs.size),
+            type: inputs.type,
+            property: inputs.property,
+          },
+          postDetail: {
+            desc: value,
+            utilities: inputs.utilities,
+            pet: inputs.pet,
+            school: parseInt(inputs.school),
+            bus: parseInt(inputs.bus),
+            restaurant: parseInt(inputs.restaurant),
+          },
+        });
+      }else{
+        res = await apiRequest.put(`/posts/${post.id}`, {
+          postData: {
+            title: inputs.title,
+            price: parseInt(inputs.price),
+            images: images,
+            address: inputs.address,
+            city: inputs.city,
+            bhk_or_rk: inputs.bhk_or_rk,
+            under_construction: inputs.uc === "yes" ? true : false,
+            bedroom: parseInt(inputs.bedroom),
+            bathroom: parseInt(inputs.bathroom),
+            latitude: inputs.latitude,
+            longitude: inputs.longitude,
+            rera: inputs.rera === "yes" ? true : false,
+            size: parseInt(inputs.size),
+            type: inputs.type,
+            property: inputs.property,
+          },
+          postDetail: {
+            desc: value,
+            utilities: inputs.utilities,
+            pet: inputs.pet,
+            school: parseInt(inputs.school),
+            bus: parseInt(inputs.bus),
+            restaurant: parseInt(inputs.restaurant),
+          },
+        });
+      }
+      
       window.location.reload();
-      navigate("/" + res.data.id);
+      // navigate("/" + res.data.id);
     } catch (err) {
       console.log(err);
       setError(error);
@@ -86,7 +115,7 @@ function EditPostPage() {
         LATITUDE: latitude,
       });
       console.log(res.data.prediction);
-      setPrediction(res.data.prediction.toFixed(3));
+      setPrediction(res.data.prediction.toFixed(5));
     } catch (err) {
       console.log(err);
       setError(error);
@@ -197,7 +226,11 @@ function EditPostPage() {
             </div>
             <div className="item">
               <label htmlFor="type">Property</label>
-              <select id="property" name="property" defaultValue={post.property}>
+              <select
+                id="property"
+                name="property"
+                defaultValue={post.property}
+              >
                 <option value="apartment">Apartment</option>
                 <option value="bungalow">Bungalow</option>
                 <option value="land">Land</option>
@@ -205,15 +238,31 @@ function EditPostPage() {
             </div>
             <div className="item">
               <label htmlFor="price">Price *</label>
-              <input id="price" required name="price" type="number" defaultValue={post.price}/>
+              <input
+                id="price"
+                required
+                name="price"
+                type="number"
+                defaultValue={post.price}
+              />
             </div>
             <div className="item">
               <label htmlFor="size">Total Size (sqft)</label>
-              <input min={0} id="size" name="size" type="number" defaultValue={post.size}/>
+              <input
+                min={0}
+                id="size"
+                name="size"
+                type="number"
+                defaultValue={post.size}
+              />
             </div>
             <div className="item">
               <label htmlFor="utilities">Utilities Policy</label>
-              <select id="utilities" name="utilities" defaultValue={post.utilities}>
+              <select
+                id="utilities"
+                name="utilities"
+                defaultValue={post.utilities}
+              >
                 <option value="owner">Owner is responsible</option>
                 <option value="tenant">Tenant is responsible</option>
                 <option value="shared">Shared</option>
@@ -228,14 +277,22 @@ function EditPostPage() {
             </div>
             <div className="item">
               <label htmlFor="uc">Under-Construction</label>
-              <select id="uc" name="uc" defaultValue={post.under_construction === false? "no" : "yes"}>
+              <select
+                id="uc"
+                name="uc"
+                defaultValue={post.under_construction === false ? "no" : "yes"}
+              >
                 <option value="no">No</option>
                 <option value="yes">Yes</option>
               </select>
             </div>
             <div className="item">
               <label htmlFor="rera">RERA Approved</label>
-              <select id="rera" name="rera" defaultValue={post.rera === false? "no" : "yes"}>
+              <select
+                id="rera"
+                name="rera"
+                defaultValue={post.rera === false ? "no" : "yes"}
+              >
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
               </select>
@@ -244,19 +301,49 @@ function EditPostPage() {
               <label htmlFor="school">
                 School&nbsp;<small>(optional)</small>
               </label>
-              <input min={0} id="school" name="school" type="number" defaultValue={post.postDetail.school}/>
+              <input
+                min={0}
+                id="school"
+                name="school"
+                type="number"
+                defaultValue={post.postDetail.school}
+              />
             </div>
             <div className="item">
-              <label htmlFor="bus">Bus&nbsp;<small>(optional)</small></label>
-              <input min={0} id="bus" name="bus" type="number" defaultValue={post.postDetail.bus} />
+              <label htmlFor="bus">
+                Bus&nbsp;<small>(optional)</small>
+              </label>
+              <input
+                min={0}
+                id="bus"
+                name="bus"
+                type="number"
+                defaultValue={post.postDetail.bus}
+              />
             </div>
             <div className="item">
-              <label htmlFor="restaurant">Restaurant&nbsp;<small>(optional)</small></label>
-              <input min={0} id="restaurant" name="restaurant" type="number" defaultValue={post.postDetail.restaurant}/>
+              <label htmlFor="restaurant">
+                Restaurant&nbsp;<small>(optional)</small>
+              </label>
+              <input
+                min={0}
+                id="restaurant"
+                name="restaurant"
+                type="number"
+                defaultValue={post.postDetail.restaurant}
+              />
             </div>
             <div className="item">
-              <label htmlFor="hospital">Hospital&nbsp;<small>(optional)</small></label>
-              <input min={0} id="hospital" name="hospital" type="number" defaultValue={post.postDetail.hospital}/>
+              <label htmlFor="hospital">
+                Hospital&nbsp;<small>(optional)</small>
+              </label>
+              <input
+                min={0}
+                id="hospital"
+                name="hospital"
+                type="number"
+                defaultValue={post.postDetail.hospital}
+              />
             </div>
             <button type="submit" className="btn">
               Add
@@ -265,7 +352,7 @@ function EditPostPage() {
           </form>
           <div className="ai-div" onClick={handleAIPrediction}>
             <div className="ai-header">
-              <img src="./google_bard_logo.png" className="ai-img" alt="" />
+              <img src="/google_bard_logo.png" className="ai-img" alt="aiml" />
               <p className="ai-heading">
                 Discover Your Home&apos;s True Worth with AI Precision
               </p>

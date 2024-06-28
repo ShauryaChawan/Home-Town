@@ -44,7 +44,13 @@ function Card({ item, modify }) {
           <img src="/pin.png" alt="" />
           <span>{item.address}</span>
         </p>
-        <p className="price">&#8377; {item.price}</p>
+        {item.type === "rent" ? (
+          <div className="price">&#x20B9; {item.price}/month</div>
+        ) : (
+          <>
+            <div className="price">&#x20B9; {item.price}</div>
+          </>
+        )}
         <div className="bottom">
           <div className="features">
             <div className="feature">
@@ -68,7 +74,7 @@ function Card({ item, modify }) {
               <div className="icons">
                 <Link to={`/edit/${item.id}`}>
                   <div className="icon edit">
-                    <img  src="/edit.png" alt="" />
+                    <img src="/edit.png" alt="" />
                   </div>
                 </Link>
                 <div onClick={handleDelete} className="icon delete">
