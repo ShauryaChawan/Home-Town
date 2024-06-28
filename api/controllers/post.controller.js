@@ -97,12 +97,51 @@ export const addPost = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+  const tokenUserId = req.userId;
+
   try {
-    res.status(200).json();
-    console.log("Post updated Successfully !!");
+    // FINDING THE POST
+    const post = await prisma.post.findUnique({
+      where: { id },
+    });
+
+    // IF POST NOT FOUND
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    // CHECKING POST'S USER_ID AND tokenUserId
+    if (post.userId !== tokenUserId) {
+      return res.status(403).json({ message: "Not Authorized!" });
+    }
+
+    // UPDATING POST
+    const updatedPost = await prisma.post.update({
+      where: { id },
+      data: {
+        ...body.postData,
+      },
+    });
+
+    // UPDATING POST DETAIL
+    const updatedPostDetail = await prisma.postDetail.upsert({
+      where: { postId: id },
+      update: {
+        ...body.postDetail,
+      },
+      create: {
+        ...body.postDetail,
+        postId: id,
+      },
+    });
+
+    res.status(200).json({ post: updatedPost, postDetail: updatedPostDetail });
+    console.log("Post updated successfully!!");
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Failed to update posts" });
+    res.status(500).json({ message: "Failed to update post" });
   }
 };
 
@@ -111,7 +150,6 @@ export const deletePost = async (req, res) => {
   const tokenUserId = req.userId;
 
   try {
-
     // FINDING THE POST
     const post = await prisma.post.findUnique({
       where: { id },
@@ -128,13 +166,15 @@ export const deletePost = async (req, res) => {
     }
 
     // Delete related PostDetail if it exists
-    await prisma.postDetail.delete({
-      where: { postId: id },
-    }).catch((err) => {
-      if (err.code !== 'P2025') {
-        throw err;
-      }
-    });
+    await prisma.postDetail
+      .delete({
+        where: { postId: id },
+      })
+      .catch((err) => {
+        if (err.code !== "P2025") {
+          throw err;
+        }
+      });
 
     // Delete related SavedPost entries
     await prisma.savedPost.deleteMany({

@@ -20,13 +20,11 @@ function Register() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     try {
       await apiRequest.post("/auth/register", {
         username,
         email,
-        password: hashedPassword,
+        password,
       });
 
       navigate("/login");

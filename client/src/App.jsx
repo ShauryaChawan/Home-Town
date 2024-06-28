@@ -59,8 +59,9 @@ function App() {
           element: <NewPostPage />,
         },
         {
-          path: "/edit",
+          path: "/edit/:id",
           element: <EditPostPage />,
+          loader: singlePageLoader,
         },
       ],
     },
