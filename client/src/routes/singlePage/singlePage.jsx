@@ -52,7 +52,7 @@ function SinglePage() {
                 <h1>{post.title}</h1>
                 <div className="address">
                   <img src="/pin.png" alt="" />
-                  <span>{post.address}</span>
+                  <span>{post.address},{post.city}</span>
                 </div>
                 <div className="price">&#x20B9; {post.price}</div>
               </div>
