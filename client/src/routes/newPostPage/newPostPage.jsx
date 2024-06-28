@@ -210,15 +210,15 @@ function NewPostPage() {
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="bus">Bus</label>
+              <label htmlFor="bus">Bus <small>(optional)</small></label>
               <input min={0} id="bus" name="bus" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="restaurant">Restaurant</label>
+              <label htmlFor="restaurant">Restaurant <small>(optional)</small></label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="hospital">Hospital</label>
+              <label htmlFor="hospital">Hospital <small>(optional)</small></label>
               <input min={0} id="hospital" name="hospital" type="number" />
             </div>
             <button type="submit" className="btn">
