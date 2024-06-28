@@ -29,16 +29,16 @@ Creinting the model for the first time, or making any changes in the model of th
    1. Add `Edit` feature to a post.
    2. ✅ Add `Delete` feature to a post
 5. ⚠️ newPostPage: 
-   1. ⚠️ Basic Form Validation.
-   2. ⚠️ Make changes in the Data Base shcema
-   3. ⚠️ Delete the `Income Policy`.
+   1. ✅ Basic Form Validation.
+   2. ✅  Make changes in the Data Base shcema
+   3. ✅ Delete the `Income Policy`.
    4. ⚠️ Add 'decimal' validation to `Longitude` & `Lattitude`
-   5. ⚠️ Make `ReactQuill` component as 'required' / compulsory to fill before sumitting.
-   6. ⚠️ Add `BHK` (numbers) and `BHK_or_RK` (dropdown)
-   7. ❌ Add `Under Construction?` (boolean) - not required (default value = 0)
-   8. ⚠️ Add `RERA` approved? (boolean [0 or 1])
-   9. ❌ Add `READY TO MOVE ?` (boolean) - not required (default value = 0)
-   10. ⚠️ Add `Resale` (boolean [0 or 1]) - if the property is of type `BUY`.
-   11. ⚠️ Add `Predict Price` button, only if the `Type` is `Rent`.
-6. ⚠️ AIML Model integration.
+   5. ✅  Make `ReactQuill` component as 'required' / compulsory to fill before sumitting.
+   6. ✅ Add `BHK` (numbers) and `BHK_or_RK` (dropdown) and also to database
+   7. ✅ Add `Under Construction?` (boolean) and also to database
+   8. ✅ Add `RERA` approved? (boolean [0 or 1]) and also to database
+   9. ❌ Add `READY TO MOVE ?` (boolean) - not required (default value = 0) 
+   10. ❌ Add `Resale` (boolean [0 or 1] => default value = 1 [as our website is for resale only, also not time to implement the following feature !!]) - if the property is of type `BUY`.
+   11. ✅  Add `Predict Price` button, only if the `Type` is `Rent`.
+6. ✅  AIML Model integration.
 7. Add 'React Toastify'.

@@ -2,6 +2,7 @@ import "./register.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import apiRequest from "../../lib/apiRequest";
+import bcrypt from "bcryptjs";
 
 function Register() {
   const [error, setError] = useState("");
@@ -19,11 +20,13 @@ function Register() {
     const email = formData.get("email");
     const password = formData.get("password");
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     try {
       await apiRequest.post("/auth/register", {
         username,
         email,
-        password,
+        password: hashedPassword,
       });
 
       navigate("/login");

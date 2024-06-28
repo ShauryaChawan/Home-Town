@@ -14,23 +14,32 @@ datasource db {
 }
 
 model Post {
-  id         String      @id @default(auto()) @map("_id") @db.ObjectId
-  title      String
-  price      Int
-  images     String[]
-  address    String
-  city       String
-  bedroom    Int
-  bathroom   Int
-  latitude   String
-  longitude  String
-  type       Type
-  property   Property
-  createdAt  DateTime    @default(now())
-  user       User        @relation(fields: [userId], references: [id])
-  userId     String      @db.ObjectId
-  postDetail PostDetail?
-  savedPosts SavedPost[]
+  id                 String       @id @default(auto()) @map("_id") @db.ObjectId
+  title              String
+  price              Int
+  images             String[]
+  address            String
+  city               String
+  bhk_or_rk          PropertyType
+  under_construction Boolean
+  bedroom            Int
+  bathroom           Int
+  latitude           String
+  longitude          String
+  rera               Boolean
+  size               Int
+  type               Type
+  property           Property
+  createdAt          DateTime     @default(now())
+  user               User         @relation(fields: [userId], references: [id])
+  userId             String       @db.ObjectId
+  postDetail         PostDetail?
+  savedPosts         SavedPost[]
+}
+
+enum PropertyType {
+  bhk
+  rk
 }
 
 enum Type {
@@ -49,11 +58,10 @@ model PostDetail {
   desc       String
   utilities  String?
   pet        String?
-  income     String?
-  size       Int?
   school     Int?
   bus        Int?
   restaurant Int?
+  hospital   Int?
   post       Post    @relation(fields: [postId], references: [id])
   postId     String  @unique @db.ObjectId
 }
@@ -83,12 +91,12 @@ model User {
 }
 
 model Chat {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  users     User[]    @relation(fields: [userIDs], references: [id])
-  userIDs   String[]  @db.ObjectId
-  createdAt DateTime  @default(now())
-  seenBy    String[]  @db.ObjectId
-  messages  Message[]
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  users       User[]    @relation(fields: [userIDs], references: [id])
+  userIDs     String[]  @db.ObjectId
+  createdAt   DateTime  @default(now())
+  seenBy      String[]  @db.ObjectId
+  messages    Message[]
   lastMessage String?
 }
 

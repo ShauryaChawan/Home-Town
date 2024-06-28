@@ -5,13 +5,16 @@ import "react-quill/dist/quill.snow.css";
 import apiRequest from "../../lib/apiRequest";
 import UploadWidget from "../../components/uploadWidget/UploadWidget";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function NewPostPage() {
   const [value, setValue] = useState("");
   const [images, setImages] = useState([]);
   const [error, setError] = useState("");
+  const [prediction, setPrediction] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,31 +26,69 @@ function NewPostPage() {
         postData: {
           title: inputs.title,
           price: parseInt(inputs.price),
+          images: images,
           address: inputs.address,
           city: inputs.city,
+          bhk_or_rk: inputs.bhk_or_rk,
+          under_construction: inputs.uc === "yes" ? true : false,
           bedroom: parseInt(inputs.bedroom),
           bathroom: parseInt(inputs.bathroom),
-          type: inputs.type,
-          property: inputs.property,
           latitude: inputs.latitude,
           longitude: inputs.longitude,
-          images: images,
+          rera: inputs.rera === "yes" ? true : false,
+          size: parseInt(inputs.size),
+          type: inputs.type,
+          property: inputs.property,
         },
         postDetail: {
           desc: value,
           utilities: inputs.utilities,
           pet: inputs.pet,
-          income: inputs.income,
-          size: parseInt(inputs.size),
           school: parseInt(inputs.school),
           bus: parseInt(inputs.bus),
           restaurant: parseInt(inputs.restaurant),
         },
       });
-      navigate("/"+res.data.id)
+      navigate("/" + res.data.id);
     } catch (err) {
       console.log(err);
       setError(error);
+    }
+  };
+
+  const handleAIPrediction = async () => {
+    setIsLoading(true);
+    const formData = new FormData(document.getElementById("postForm"));
+    const inputs = Object.fromEntries(formData);
+
+    const uc = inputs.uc == "yes" ? 1 : 0;
+    const rera = inputs.rera == "yes" ? 1 : 0;
+    const bhk_no = parseInt(inputs.bedroom);
+    const bhk_or_rk = inputs.rera == "bhk" ? 0 : 1;
+    const size = parseFloat(inputs.size);
+    const longitude = parseFloat(inputs.longitude);
+    const latitude = parseFloat(inputs.latitude);
+
+    try {
+      const res = await axios.post("http://localhost:5000/predict", {
+        POSTED_BY: 0,
+        UNDER_CONSTRUCTION: uc,
+        RERA: rera,
+        BHK_NO: bhk_no,
+        BHK_OR_RK: bhk_or_rk,
+        SQUARE_FT: size,
+        READY_TO_MOVE: 1,
+        RESALE: 1,
+        LONGITUDE: longitude,
+        LATITUDE: latitude,
+      });
+      console.log(res.data.prediction);
+      setPrediction(res.data.prediction.toFixed(3));
+    } catch (err) {
+      console.log(err);
+      setError(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -56,7 +97,7 @@ function NewPostPage() {
       <div className="formContainer">
         <h1>Add New Post</h1>
         <div className="wrapper">
-          <form onSubmit={handleSubmit}>
+          <form id="postForm" onSubmit={handleSubmit}>
             <div className="item">
               <label htmlFor="title">Title *</label>
               <input id="title" required name="title" type="text" />
@@ -82,11 +123,23 @@ function NewPostPage() {
             </div>
             <div className="item">
               <label htmlFor="bedroom">Bedroom Number *</label>
-              <input min={1} id="bedroom" required name="bedroom" type="number" />
+              <input
+                min={1}
+                id="bedroom"
+                required
+                name="bedroom"
+                type="number"
+              />
             </div>
             <div className="item">
               <label htmlFor="bathroom">Bathroom Number *</label>
-              <input min={1} id="bathroom" required name="bathroom" type="number" />
+              <input
+                min={1}
+                id="bathroom"
+                required
+                name="bathroom"
+                type="number"
+              />
             </div>
             <div className="item">
               <label htmlFor="latitude">Latitude *</label>
@@ -137,17 +190,23 @@ function NewPostPage() {
               </select>
             </div>
             <div className="item">
-              <label htmlFor="income">Income Policy</label>
-              <input
-                id="income"
-                name="income"
-                type="text"
-                placeholder="Income Policy"
-              />
+              <label htmlFor="uc">Under-Construction</label>
+              <select id="uc" name="uc">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
             </div>
-            
             <div className="item">
-              <label htmlFor="school">School</label>
+              <label htmlFor="rera">RERA Approved</label>
+              <select id="rera" name="rera">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div className="item">
+              <label htmlFor="school">
+                School <small>(optional)</small>
+              </label>
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
@@ -158,9 +217,31 @@ function NewPostPage() {
               <label htmlFor="restaurant">Restaurant</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
-            <button type="submit" className="btn">Add</button>
+            <div className="item">
+              <label htmlFor="hospital">Hospital</label>
+              <input min={0} id="hospital" name="hospital" type="number" />
+            </div>
+            <button type="submit" className="btn">
+              Add
+            </button>
             {error && <span>error</span>}
           </form>
+          <div className="ai-div" onClick={handleAIPrediction}>
+            <div className="ai-header">
+              <img src="./google_bard_logo.png" className="ai-img" alt="" />
+              <p className="ai-heading">
+                Discover Your Home&apos;s True Worth with AI Precision
+              </p>
+            </div>
+            <div className="ai-wrapper">
+              <button className="ai-btn">Predict Price</button>
+              {isLoading ? (
+                <div className="predicted-price">Calculating ...</div>
+              ) : (
+                <div className="predicted-price">&#8377;{prediction} L</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <div className="sideContainer">
