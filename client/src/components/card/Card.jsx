@@ -1,8 +1,36 @@
-import { Link } from "react-router-dom";
 import "./card.scss";
+import { Link, useNavigate } from "react-router-dom";
+import apiRequest from "../../lib/apiRequest";
 
 function Card({ item, modify }) {
-  console.log("Card modify: " + modify);
+  // const [shouldDelete, setShouldDelete] = useState();
+
+  const deletePopUp = () => {
+    let value;
+    if (confirm("Are you sure you want to delete your post ?")) {
+      // setShouldDelete(true);
+      value = true;
+      console.log(value);
+    } else {
+      // setShouldDelete(false);
+      value = false;
+      console.log(value);
+    }
+    return value;
+  };
+
+  const handleDelete = async () => {
+    const shouldDelete = deletePopUp();
+
+    if (shouldDelete) {
+      try {
+        await apiRequest.delete(`/posts/${item.id}`);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <div className="card">
       <Link to={`/${item.id}`} className="imageContainer">
@@ -31,10 +59,12 @@ function Card({ item, modify }) {
           {modify && (
             <>
               <div className="icons">
-                <div className="icon edit">
-                  <img src="/edit.png" alt="" />
-                </div>
-                <div className="icon delete">
+                <Link to={`/edit/${item.id}`}>
+                  <div className="icon edit">
+                    <img src="/edit.png" alt="" />
+                  </div>
+                </Link>
+                <div onClick={handleDelete} className="icon delete">
                   <img src="/trash.png" alt="" />
                 </div>
               </div>
@@ -45,5 +75,4 @@ function Card({ item, modify }) {
     </div>
   );
 }
-
 export default Card;

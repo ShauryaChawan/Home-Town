@@ -2,7 +2,7 @@ import "./list.scss";
 import Card from "../card/Card";
 
 function List({ posts, modify=false }) {
-  console.log("List modify: " + modify)
+  // console.log("List modify: " + modify)
   return (
     <div className="list">
       {posts.map((item) => (

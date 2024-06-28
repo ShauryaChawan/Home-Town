@@ -8,6 +8,7 @@ import Login from "./routes/login/login.jsx";
 import Register from "./routes/register/register.jsx";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage.jsx";
 import NewPostPage from "./routes/newPostPage/newPostPage.jsx";
+import EditPostPage from "./routes/editPostPage/editPostPage.jsx";
 import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loader.js";
 
 function App() {
@@ -56,6 +57,10 @@ function App() {
         {
           path: "/add",
           element: <NewPostPage />,
+        },
+        {
+          path: "/edit",
+          element: <EditPostPage />,
         },
       ],
     },
