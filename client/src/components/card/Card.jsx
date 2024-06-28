@@ -55,13 +55,20 @@ function Card({ item, modify }) {
               <img src="/bath.png" alt="" />
               <span>{item.bathroom} bathroom</span>
             </div>
+            <div className="feature">
+              {item.type === "rent" ? (
+                <img className="rent-sell" src="/rent.png" alt="" />
+              ) : (
+                <img className="rent-sell" src="/sell.png" alt="" />
+              )}
+            </div>
           </div>
           {modify && (
             <>
               <div className="icons">
                 <Link to={`/edit/${item.id}`}>
                   <div className="icon edit">
-                    <img src="/edit.png" alt="" />
+                    <img  src="/edit.png" alt="" />
                   </div>
                 </Link>
                 <div onClick={handleDelete} className="icon delete">
