@@ -21,10 +21,10 @@ function Card({ item, modify }) {
 
   const handleDelete = async () => {
     const shouldDelete = deletePopUp();
-
     if (shouldDelete) {
       try {
         await apiRequest.delete(`/posts/${item.id}`);
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }

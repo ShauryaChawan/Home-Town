@@ -26,6 +26,8 @@ Creinting the model for the first time, or making any changes in the model of th
    1. ✅ Solve the error of socket.io
    2. ✅ Add functionality to "Send a Message".
 4. ⚠️ Add `Edit` and `Delete` post feature for "Posts".
+   1. Add `Edit` feature to a post.
+   2. ✅ Add `Delete` feature to a post
 5. ⚠️ newPostPage: 
    1. ⚠️ Basic Form Validation.
    2. ⚠️ Make changes in the Data Base shcema
