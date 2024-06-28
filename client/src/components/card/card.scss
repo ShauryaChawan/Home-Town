@@ -3,6 +3,12 @@
 .card {
   display: flex;
   gap: 20px;
+  // padding: 10px;
+  // border-radius: 5px;
+  // margin: 10px;
+  // box-shadow: 0px 0px 11px 0px #888;
+  // -webkit-box-shadow: 0px 0px 11px 0px #888;
+  // -moz-box-shadow: 0px 0px 11px 0px #888;
 
   .imageContainer {
     flex: 2;
@@ -96,6 +102,14 @@
           &:hover {
             background-color: lightgray;
           }
+        }
+
+        .delete {
+          background-color: rgb(255, 151, 151);
+        }
+
+        .edit {
+          background-color: rgba(254, 205, 81, 0.438);
         }
       }
     }

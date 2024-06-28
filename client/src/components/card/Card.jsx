@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./card.scss";
 
-function Card({ item }) {
+function Card({ item, modify }) {
+  console.log("Card modify: " + modify);
   return (
     <div className="card">
       <Link to={`/${item.id}`} className="imageContainer">
@@ -15,7 +16,7 @@ function Card({ item }) {
           <img src="/pin.png" alt="" />
           <span>{item.address}</span>
         </p>
-        <p className="price">$ {item.price}</p>
+        <p className="price">&#8377; {item.price}</p>
         <div className="bottom">
           <div className="features">
             <div className="feature">
@@ -27,14 +28,18 @@ function Card({ item }) {
               <span>{item.bathroom} bathroom</span>
             </div>
           </div>
-          <div className="icons">
-            <div className="icon">
-              <img src="/save.png" alt="" />
-            </div>
-            <div className="icon">
-              <img src="/chat.png" alt="" />
-            </div>
-          </div>
+          {modify && (
+            <>
+              <div className="icons">
+                <div className="icon edit">
+                  <img src="/edit.png" alt="" />
+                </div>
+                <div className="icon delete">
+                  <img src="/trash.png" alt="" />
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
