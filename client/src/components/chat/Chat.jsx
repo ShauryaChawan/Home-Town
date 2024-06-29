@@ -3,13 +3,13 @@ import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import { format } from "timeago.js";
-// import { SocketContext } from "../../context/SocketContext";
+import { SocketContext } from "../../context/SocketContext";
 import { useNotificationStore } from "../../lib/notificationStore";
 
 function Chat({ chats }) {
   const [chat, setChat] = useState(null);
   const { currentUser } = useContext(AuthContext);
-  // const { socket } = useContext(SocketContext);
+  const { socket } = useContext(SocketContext);
 
   const messageEndRef = useRef();
 
@@ -42,10 +42,10 @@ function Chat({ chats }) {
       const res = await apiRequest.post("/messages/" + chat.id, { text });
       setChat((prev) => ({ ...prev, messages: [...prev.messages, res.data] }));
       e.target.reset();
-      // socket.emit("sendMessage", {
-      //   receiverId: chat.receiver.id,
-      //   data: res.data,
-      // });
+      socket.emit("sendMessage", {
+        receiverId: chat.receiver.id,
+        data: res.data,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -60,19 +60,18 @@ function Chat({ chats }) {
       }
     };
 
-    // if (chat && socket) {
-    //   socket.on("getMessage", (data) => {
-    //     if (chat.id === data.chatId) {
-    //       setChat((prev) => ({ ...prev, messages: [...prev.messages, data] }));
-    read();
-    //     }
-    //   });
-    // }
-    // return () => {
-    //   socket.off("getMessage");
-    // };
-    // }, [socket, chat]);
-  }, [chat]);
+    if (chat && socket) {
+      socket.on("getMessage", (data) => {
+        if (chat.id === data.chatId) {
+          setChat((prev) => ({ ...prev, messages: [...prev.messages, data] }));
+          read();
+        }
+      });
+    }
+    return () => {
+      socket.off("getMessage");
+    };
+  }, [socket, chat]);
 
   return (
     <div className="chat">

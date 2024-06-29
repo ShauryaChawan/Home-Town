@@ -1,6 +1,6 @@
 # Home Town 2.0
 
-Real Estate Website - for selling, buying and renting properties
+Real Estate Website - for selling, buying and renting properties.
 
 ## Tech Stack (Technologies and Libraries):
 
@@ -72,7 +72,8 @@ Creating the model for the first time, or making any changes in the model of the
    2. ✅ Add functionality to "Send a Message".
 4. ✅  editPostPage.
    1. ✅ Add `Edit` feature to a post.
-   2. ✅ Add `Delete` feature to a post
+   2. Change the logic, Iif the images are not to be change.
+   3. ✅ Add `Delete` feature to a post
 5. ⚠️ newPostPage: 
    1. ✅ Basic Form Validation.
    2. ✅  Make changes in the Data Base shcema
@@ -89,6 +90,5 @@ Creating the model for the first time, or making any changes in the model of the
 7. Add 'React Toastify'.
 
 ## Note:
-I am planning to merge the `socket` folder or `socket` api with the backend, so that it will be easy for me to deploy both the backend and frontend.
-For now i have commented out all the real time chat feature from the frontend code, ie. `client`.
-So only the `frontend` or `client` or 'server' or `api` is deployed !!
+1. This is a guided project, but there were few bugs and missing features that i have added, and have mentioned above.
+2. I have Integrated a mojor feature of 'House Price Prediction' which is on other github repository. I have created an api for that preiction model, and i am calling it in the "Add Post Page".
