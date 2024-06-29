@@ -350,7 +350,7 @@ function EditPostPage() {
             </button>
             {error && <span>error</span>}
           </form>
-          <div className="ai-div" onClick={handleAIPrediction}>
+          <div className="ai-div">
             <div className="ai-header">
               <img src="/google_bard_logo.png" className="ai-img" alt="aiml" />
               <p className="ai-heading">
@@ -358,7 +358,7 @@ function EditPostPage() {
               </p>
             </div>
             <div className="ai-wrapper">
-              <button className="ai-btn">Predict Price</button>
+              <button onClick={handleAIPrediction} className="ai-btn">Predict Price</button>
               {isLoading ? (
                 <div className="predicted-price">Calculating ...</div>
               ) : (

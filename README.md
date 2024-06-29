@@ -1,16 +1,35 @@
 # Home Town 2.0
 
-Real Estate Website - for selling and buying properties
+Real Estate Website - for selling, buying and renting properties
+
+## Functionalities:
+
+1. User:
+   1. Login
+   2. Register
+   3. Logout
+   4. Update Profile
+   5. View Profile
+   6. View all created property listing on the profile page
+   7. View all saved property listing on the profile page
+2. Post (Property Ad):
+   1. Create Post (Add Post Page)
+   2. Delete Post 
+   3. Update Post (Edit Post Page)
+   4. Read A Post (Single Post Page)
+   5. Save a Post
+3. Chat
 
 ## Prisma:
-Creinting the model for the first time, or making any changes in the model of the schema.prisma. then stop the server and run the command `npx prisma db push`
+Creating the model for the first time, or making any changes in the model of the prisma's schema (file : `schema.prisma`), then stop the server and run the command `npx prisma db push`
 
 ## Runn Project:
 1. `Socket` : `npm i` | `npm run socket`
 2. `Server/Api` : `npm i` | `npm run server`
 3. `Frontend/Client` : `npm i` | `npm run dev`
-4. `AIML Model` : get the aiml model - https://github.com/ShauryaChawan/Hour-Price-Prediction
-   1. Download libraries: `pip install flask joblib numpy flask-cors` | `python app.py` 
+4. `AIML Model` : 
+   1. Get the aiml model - https://github.com/ShauryaChawan/Hour-Price-Prediction
+   2. Download libraries: `pip install flask joblib numpy flask-cors` | `python app.py` 
 
 ## Bugs / Features to be implemented beyond project scope - To Do:
 1. ✅ Home Page: ✅ Remove unsed link from nav bar
@@ -25,8 +44,8 @@ Creinting the model for the first time, or making any changes in the model of th
 3. ✅ Chat:
    1. ✅ Solve the error of socket.io
    2. ✅ Add functionality to "Send a Message".
-4. ⚠️ editPostPage.
-   1. Add `Edit` feature to a post.
+4. ✅  editPostPage.
+   1. ✅ Add `Edit` feature to a post.
    2. ✅ Add `Delete` feature to a post
 5. ⚠️ newPostPage: 
    1. ✅ Basic Form Validation.
@@ -42,3 +61,8 @@ Creinting the model for the first time, or making any changes in the model of th
    11. ✅  Add `Predict Price` button, only if the `Type` is `Rent`.
 6. ✅  AIML Model integration.
 7. Add 'React Toastify'.
+
+## Note:
+I am planning to merge the `socket` folder or `socket` api with the backend, so that it will be easy for me to deploy both the backend and frontend.
+For now i have commented out all the real time chat feature from the frontend code, ie. `client`.
+So only the `frontend` or `client` or 'server' or `api` is deployed !!

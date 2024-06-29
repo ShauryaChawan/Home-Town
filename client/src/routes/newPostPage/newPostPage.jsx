@@ -226,7 +226,7 @@ function NewPostPage() {
             </button>
             {error && <span>error</span>}
           </form>
-          <div className="ai-div" onClick={handleAIPrediction}>
+          <div className="ai-div" >
             <div className="ai-header">
               <img src="/google_bard_logo.png" className="ai-img" alt="" />
               <p className="ai-heading">
@@ -234,7 +234,7 @@ function NewPostPage() {
               </p>
             </div>
             <div className="ai-wrapper">
-              <button className="ai-btn">Predict Price</button>
+              <button onClick={handleAIPrediction} className="ai-btn">Predict Price</button>
               {isLoading ? (
                 <div className="predicted-price">Calculating ...</div>
               ) : (

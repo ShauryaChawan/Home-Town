@@ -116,7 +116,7 @@ function SinglePage() {
           <div className="sizes">
             <div className="size">
               <img src="/size.png" alt="" />
-              <span>{post.postDetail.size} sqft</span>
+              <span>{post.size} sqft</span>
             </div>
             <div className="size">
               <img src="/bed.png" alt="" />
