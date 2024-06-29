@@ -2,6 +2,32 @@
 
 Real Estate Website - for selling, buying and renting properties
 
+## Tech Stack (Technologies and Libraries):
+
+1. Frontend:
+   1. React.js
+   2. Axios
+   3. Bcryptjs
+   4. DOMpurify
+   5. Leaflet.js
+   6. React-Router-DOM
+   7. React-Quill
+   8. Sass
+   9. Socket.IO-Client
+   10. Timeago.js
+   11. Zustand
+2. Backend:
+   1. Node.js
+   2. Express.js
+   3. Prisma
+   4. MongoDB
+   5. JWT 
+   6. cors
+   7. cookie-parser
+   8. dotenv
+   9.  nodemon
+   10. Bcrypt
+
 ## Functionalities:
 
 1. User:
@@ -18,7 +44,7 @@ Real Estate Website - for selling, buying and renting properties
    3. Update Post (Edit Post Page)
    4. Read A Post (Single Post Page)
    5. Save a Post
-3. Chat
+3. Chat: MongoDB + Soket.IO
 
 ## Prisma:
 Creating the model for the first time, or making any changes in the model of the prisma's schema (file : `schema.prisma`), then stop the server and run the command `npx prisma db push`
