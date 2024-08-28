@@ -57,7 +57,7 @@ Creating the model for the first time, or making any changes in the model of the
    1. Get the aiml model - https://github.com/ShauryaChawan/Hour-Price-Prediction
    2. Download libraries: `pip install flask joblib numpy flask-cors` | `python app.py` 
 
-## Bugs / Features to be implemented beyond project scope - To Do:
+## 🪲 Bugs / Features to be implemented - To Do 📝:
 1. ✅ Home Page: ✅ Remove unsed link from nav bar
 2. Securi Features:
    1. Login page:
