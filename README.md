@@ -88,7 +88,3 @@ Creating the model for the first time, or making any changes in the model of the
    11. ✅  Add `Predict Price` button, only if the `Type` is `Rent`.
 6. ✅  AIML Model integration.
 7. Add 'React Toastify'.
-
-## Note:
-1. This is a guided project, but there were few bugs and missing features that i have added, and have mentioned above.
-2. I have Integrated a mojor feature of 'House Price Prediction' which is on other github repository. I have created an api for that preiction model, and i am calling it in the "Add Post Page".
