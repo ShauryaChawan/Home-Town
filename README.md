@@ -1,4 +1,4 @@
-# 🏠 Home Town 2.0 🏠
+# 🏠 Home Town 🏠
 
 Real Estate Website - for selling, buying, and renting properties.
 
