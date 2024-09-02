@@ -46,6 +46,7 @@ Real Estate Website - for selling, buying, and renting properties.
    3. Update Post (Edit Post Page) ✏️
    4. Read A Post (Single Post Page) 📖
    5. Save a Post 📌
+   6. Generate Estatemated Price of the Property using AI Model 🤖
 
 3. **Chat 💬**: MongoDB + Socket.IO
 
@@ -60,7 +61,7 @@ Creating the model for the first time, or making any changes in the model of Pri
    1. Get the AIML model - https://github.com/ShauryaChawan/Hour-Price-Prediction
    2. Download libraries: `pip install flask joblib numpy flask-cors` | `python app.py`
 
-## 🪲 Bugs / Features to be implemented - To Do 📝:
+## 🐞 Bugs / Features to be implemented - To Do 📝:
 1. ✅ **Home Page**: ✅ Remove unused links from the nav bar.
 2. **Security Features 🔒**:
    1. **Login Page**:
