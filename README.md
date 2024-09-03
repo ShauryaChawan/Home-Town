@@ -1,6 +1,121 @@
-# 🏠 Home Town 🏠
+<h1> 🏠 Home Town 🏠 </h1>
 
 Real Estate Website - for selling, buying, and renting properties.
+
+- [📸 Project Images 📸](#-project-images-)
+- [📝 Functionalities 📝:](#-functionalities-)
+- [⚙️ Tech Stack (Technologies and Libraries) 👩‍💻:](#️-tech-stack-technologies-and-libraries-)
+- [🐞 Bugs / Features to be implemented - To Do 📝:](#-bugs--features-to-be-implemented---to-do-)
+- [Future Scope 🚀:](#future-scope-)
+
+
+## 📸 Project Images 📸
+
+1. Home Page
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347937/qgds2iwtahxoofe35wsh.png)
+
+2. Registration Page
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347923/x3bty2nr9eddqr03kqwb.png)
+
+3. Login Page
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347939/rjgvlqsxwqe6l6ldixkb.png)
+
+4. Home Page with User
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347939/ztzmqlzvtvluc1t431mp.png)
+
+5. Update profile Photo
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347930/xu1wtnci4ixobarxhvck.png)
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347931/vb6p0usre1psrx0jxfz0.png)
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347933/qnwid0622zrxhr4xqjix.png)
+
+6. Updated Home Page
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347936/joeaax9egjr9tzdflkck.png)
+
+7. Property listings (buy)
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347928/t52wcpdnqhhlhbd0hm9v.png)
+
+8. Property listings (rent)
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347928/xxkgdchx4xculhvavvjz.png)
+
+9. Single Post Page
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347933/hmnveffngzln1t5zfvws.png)
+
+10. Photo Gallary
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347933/qa1089uxesahqx736lxt.png)
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347927/ffowfavihqciqqbniqr3.png)
+
+11.  Save Post
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347942/wjlgiazdxkfoi08mzemz.png)
+
+12. View All saved Posts
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347940/qyeiurhheyhsnwceeftr.png)
+
+13.  View All Property Listing
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347941/qynhkv0iprgyeyjwtbph.png)
+
+14. Send message
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347926/fy2dqbwvdd6pbnc1z5v1.png)
+
+15.  Received Message
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347938/pbfpgq5ezc3ndbolg7z0.png)
+
+16. Message Seen and Replied
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347938/hg4jjdqavfmj5ebyjw2y.png)
+
+17. Add Post
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347932/lvsdsnk0kgsqcslrsgu2.png)
+
+18. Generate Property Price for selling
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347933/khqgryh3uliwnudeejse.png)
+
+19. Edit Post
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725347933/qpii2qiurif2rrsbodxg.png)
+
+20. Delete Post
+
+![](https://res.cloudinary.com/chewytreant/image/upload/v1725352857/d679bffe-a9cc-42db-b211-7e79ed2b6386.png)
+
+## 📝 Functionalities 📝:
+
+1. **User 👤**:
+   1. Login 🔑
+   2. Register 📝
+   3. Logout 🚪
+   4. Update Profile ✏️
+   5. View Profile 👁️
+   6. View all created property listings on the profile page 🏠
+   7. View all saved property listings on the profile page 📌
+
+2. **Post (Property Ad) 🏢**:
+   1. Create Post (Add Post Page) ➕
+   2. Delete Post 🗑️
+   3. Update Post (Edit Post Page) ✏️
+   4. Read A Post (Single Post Page) 📖
+   5. Save a Post 📌
+   6. Generate Estatemated Price of the Property using AI Model 🤖
+
+3. **Chat 💬**: MongoDB + Socket.IO
 
 ## ⚙️ Tech Stack (Technologies and Libraries) 👩‍💻:
 
@@ -28,38 +143,6 @@ Real Estate Website - for selling, buying, and renting properties.
    8. dotenv 🔑
    9. nodemon 🔄
    10. Bcrypt 🔒
-
-## Functionalities 📝:
-
-1. **User 👤**:
-   1. Login 🔑
-   2. Register 📝
-   3. Logout 🚪
-   4. Update Profile ✏️
-   5. View Profile 👁️
-   6. View all created property listings on the profile page 🏠
-   7. View all saved property listings on the profile page 📌
-
-2. **Post (Property Ad) 🏢**:
-   1. Create Post (Add Post Page) ➕
-   2. Delete Post 🗑️
-   3. Update Post (Edit Post Page) ✏️
-   4. Read A Post (Single Post Page) 📖
-   5. Save a Post 📌
-   6. Generate Estatemated Price of the Property using AI Model 🤖
-
-3. **Chat 💬**: MongoDB + Socket.IO
-
-## Prisma 📊:
-Creating the model for the first time, or making any changes in the model of Prisma's schema (file: `schema.prisma`), then stop the server and run the command `npx prisma db push`.
-
-## Run Project 🚀:
-1. **Socket**: `npm i` | `npm run socket`
-2. **Server/Api**: `npm i` | `npm run server`
-3. **Frontend/Client**: `npm i` | `npm run dev`
-4. **AIML Model 🤖**: 
-   1. Get the AIML model - https://github.com/ShauryaChawan/Hour-Price-Prediction
-   2. Download libraries: `pip install flask joblib numpy flask-cors` | `python app.py`
 
 ## 🐞 Bugs / Features to be implemented - To Do 📝:
 1. ✅ **Home Page**: ✅ Remove unused links from the nav bar.
@@ -93,7 +176,7 @@ Creating the model for the first time, or making any changes in the model of Pri
 6. ✅ **AIML Model Integration**.
 7. Add **React Toastify** 🍞.
 
-### Future Scope 🚀:
+## Future Scope 🚀:
 
 1. **Advanced Search and Filtering 🔍:**
    - Implement AI-driven search suggestions and property recommendations based on user preferences and behavior.
